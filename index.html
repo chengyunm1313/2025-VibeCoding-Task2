@@ -598,31 +598,112 @@
     /* CSS:PROJECTS-START */
     .section-projects {
       border-top: 1px solid rgba(15, 23, 42, 0.98);
-      background: radial-gradient(circle at center, rgba(30, 64, 175, 0.28), rgba(2, 6, 23, 1));
+      background: radial-gradient(circle at top, rgba(30, 64, 175, 0.35), rgba(2, 6, 23, 1));
     }
 
     .projects-grid {
-      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
     }
 
-    .project-meta-row {
+    .project-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border-radius: 1rem;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), rgba(15, 23, 42, 0.98));
+      padding: 1.25rem 1.25rem 1.5rem;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.95);
+      transition:
+        transform 0.18s ease-out,
+        box-shadow 0.18s ease-out,
+        border-color 0.18s ease-out,
+        background 0.18s ease-out;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 26px 60px rgba(15, 23, 42, 1);
+      border-color: rgba(56, 189, 248, 0.9);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.24), rgba(15, 23, 42, 0.98));
+    }
+
+    .project-cover {
+      border-radius: 0.9rem;
+      overflow: hidden;
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 1), rgba(15, 23, 42, 0.85));
+      margin-bottom: 0.9rem;
+    }
+
+    .project-cover img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+      border-radius: 0.9rem;
+    }
+
+    .project-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0;
+      color: #e5e7eb;
+    }
+
+    .project-description {
+      font-size: 0.9rem;
+      color: #d1d5db;
+      margin: 0.4rem 0 0.8rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0 0 0.9rem;
+    }
+
+    .project-tag {
+      padding: 0.15rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 0.78rem;
+      color: #cbd5f5;
+      background: rgba(15, 23, 42, 0.95);
+      white-space: nowrap;
+    }
+
+    .project-actions {
+      margin-top: auto;
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-top: 0.75rem;
-      font-size: 0.8rem;
-      color: #9ca3af;
     }
 
-    .project-link {
+    .project-action {
       display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
       font-size: 0.8rem;
-      margin-top: 0.5rem;
-      color: #7dd3fc;
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-      word-break: break-all;
+      font-weight: 500;
+      border: 1px solid rgba(56, 189, 248, 0.8);
+      background: rgba(15, 23, 42, 0.96);
+      color: #e5e7eb;
+      text-decoration: none;
+    }
+
+    .project-action-secondary {
+      border-color: rgba(148, 163, 184, 0.8);
+      background: transparent;
+    }
+
+    .project-action:hover {
+      border-color: rgba(125, 211, 252, 1);
     }
     /* CSS:PROJECTS-END */
 
@@ -705,6 +786,10 @@
       .contact-list {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (min-width: 1024px) {
@@ -718,6 +803,14 @@
 
       .section {
         padding: 5.5rem 0;
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .project-cover img {
+        height: 210px;
       }
     }
     /* CSS:RWD-END */
@@ -902,52 +995,120 @@
       <!-- SECTION:PROJECTS-START -->
       <section id="projects" class="section section-projects" aria-labelledby="projects-heading">
         <div class="container">
-          <h2 id="projects-heading" class="section-title">作品集 Projects（占位內容 · 之後會用 Section SDD 替換）</h2>
+          <h2 id="projects-heading" class="section-title">精選專案 PROJECTS</h2>
           <p class="section-intro">
-            這裡目前是 Projects 區的占位內容。未來會放入代表性的專案卡片，例如個人 Side Project、實際上線產品、開源貢獻或教學示例，每一張卡片都可以簡要描述問題情境、解法與個人貢獻。
+            不只是寫程式，更重視使用者體驗與效能優化。以下是我的代表性專案，涵蓋 SaaS 數據系統、電商平台與互動任務管理工具。
           </p>
-          <div class="grid projects-grid" aria-label="作品集占位卡片">
-            <article class="card">
-              <div class="card-header">作品卡片占位 · Project A</div>
-              <div class="card-meta">預計放：專案名稱、角色、使用技術</div>
-              <div class="card-body">
-                <p>
-                  這是一張示意用的作品卡片占位內容。未來可由 Section SDD 產生更完整的結構，例如拆出「背景與目標」、「技術決策」、「成果指標」等子區塊。
-                </p>
-                <div class="project-meta-row">
-                  <span class="badge">之後可替換：技術標籤列</span>
-                  <span class="badge">例：React · TypeScript · RWD</span>
-                </div>
-                <a class="project-link" href="https://github.com/yourname" target="_blank" rel="noopener noreferrer">
-                  Demo / GitHub 連結占位
+
+          <div class="projects-grid" aria-label="精選作品集列表">
+            <article class="project-card">
+              <div class="project-cover">
+                <img
+                  src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80"
+                  alt="帶有多個圖表與數據圖形的深色儀表板介面截圖"
+                  loading="lazy">
+              </div>
+              <h3 class="project-title">CryptoDash 數據儀表板</h3>
+              <p class="project-description">
+                為投資者設計的即時數據監控平台，整合多家交易所與行情來源。針對大量數據渲染的效能瓶頸進行優化，並實作 Dark Mode 與完全響應式的圖表布局。
+              </p>
+              <div class="project-tags" aria-label="使用技術">
+                <span class="project-tag">React</span>
+                <span class="project-tag">TypeScript</span>
+                <span class="project-tag">Recharts</span>
+              </div>
+              <div class="project-actions">
+                <a
+                  class="project-action"
+                  href="https://crypto-dashboard.example.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Demo
+                </a>
+                <a
+                  class="project-action project-action-secondary"
+                  href="https://github.com/aurora-lin/cryptodash"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub Repo
                 </a>
               </div>
             </article>
 
-            <article class="card">
-              <div class="card-header">作品卡片占位 · Project B</div>
-              <div class="card-meta">預計放：產品類型、負責範圍、關鍵成果</div>
-              <div class="card-body">
-                <p>
-                  可在這裡示範另一種專案型態，例如 Dashboard、設計系統、元件庫或教學平台，強調可維護性、可重用性以及與團隊協作的方式。
-                </p>
-                <div class="project-meta-row">
-                  <span class="badge">之後可替換：專案類別</span>
-                  <span class="badge">例：後台系統 · 設計系統</span>
-                </div>
-                <a class="project-link" href="https://your-portfolio.example.com" target="_blank" rel="noopener noreferrer">
-                  線上展示站占位連結
+            <article class="project-card">
+              <div class="project-cover">
+                <img
+                  src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=80"
+                  alt="極簡電商品牌的產品頁面與智慧型手錶商品照片"
+                  loading="lazy">
+              </div>
+              <h3 class="project-title">Urban Vibe 潮流選物店</h3>
+              <p class="project-description">
+                專注於 SEO 與載入速度的潮流選物電商網站，使用 Next.js 進行 Server-side Rendering，優化首屏載入與核心網頁指標。整合 Stripe API 建立安全且流暢的結帳流程。
+              </p>
+              <div class="project-tags" aria-label="使用技術">
+                <span class="project-tag">Next.js</span>
+                <span class="project-tag">Tailwind CSS</span>
+                <span class="project-tag">Stripe API</span>
+              </div>
+              <div class="project-actions">
+                <a
+                  class="project-action"
+                  href="https://urban-vibe-shop.example.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Demo
+                </a>
+                <a
+                  class="project-action project-action-secondary"
+                  href="https://github.com/aurora-lin/urban-vibe"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub Repo
+                </a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-cover">
+                <img
+                  src="https://plus.unsplash.com/premium_photo-1720503242835-b537741c9736?auto=format&fit=crop&w=1200&q=80"
+                  alt="帶有多欄看板卡片與任務列表的拖曳式管理介面示意畫面"
+                  loading="lazy">
+              </div>
+              <h3 class="project-title">TaskFlow 拖曳式任務管理</h3>
+              <p class="project-description">
+                模仿 Trello 的協作式任務管理工具，強調順暢的 Drag &amp; Drop 互動體驗。結合 Firebase 實作多人即時同步，讓不同角色能在同一看板上協作與追蹤任務狀態。
+              </p>
+              <div class="project-tags" aria-label="使用技術">
+                <span class="project-tag">Vue 3</span>
+                <span class="project-tag">DnD Kit</span>
+                <span class="project-tag">Firebase</span>
+              </div>
+              <div class="project-actions">
+                <a
+                  class="project-action"
+                  href="https://taskflow-board.example.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Demo
+                </a>
+                <a
+                  class="project-action project-action-secondary"
+                  href="https://github.com/aurora-lin/taskflow"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub Repo
                 </a>
               </div>
             </article>
           </div>
-          <p class="section-note">
-            之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 Projects section 程式碼整段貼在
-            <span class="pill">SECTION:PROJECTS-START</span>
-            與
-            <span class="pill">SECTION:PROJECTS-END</span>
-            這兩個註解中間，完全取代現在這一區。若未來有更多作品卡片，也請一併包在同一個 &lt;section&gt; 裡。
-          </p>
         </div>
       </section>
       <!-- SECTION:PROJECTS-END -->
