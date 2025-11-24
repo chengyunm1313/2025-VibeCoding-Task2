@@ -710,13 +710,104 @@
     /* CSS:CONTACT-START */
     .section-contact {
       border-top: 1px solid rgba(15, 23, 42, 0.98);
-      background: linear-gradient(to bottom, #020617, #020617);
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 1), #020617);
     }
 
-    .contact-note {
-      font-size: 0.85rem;
-      color: #6b7280;
-      margin-top: 1rem;
+    .contact-header {
+      max-width: 42rem;
+      margin: 0 auto 2rem;
+      text-align: center;
+    }
+
+    .contact-intro {
+      margin-top: 0.75rem;
+      color: #9ca3af;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .contact-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1.25rem 1.25rem 1.35rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), rgba(15, 23, 42, 0.98));
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.95);
+      transition:
+        transform 0.18s ease-out,
+        box-shadow 0.18s ease-out,
+        border-color 0.18s ease-out,
+        background 0.18s ease-out;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 26px 60px rgba(15, 23, 42, 1);
+      border-color: rgba(56, 189, 248, 0.9);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.24), rgba(15, 23, 42, 0.98));
+    }
+
+    .contact-icon {
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.9), rgba(37, 99, 235, 0.95));
+      color: #0b1120;
+    }
+
+    .contact-card-title {
+      margin: 0.25rem 0 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .contact-card-text {
+      margin: 0.25rem 0 0.75rem;
+      font-size: 0.9rem;
+      color: #d1d5db;
+    }
+
+    .contact-card-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.7);
+      background: rgba(15, 23, 42, 0.96);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: #e5e7eb;
+      margin-top: auto;
+      min-width: 0;
+    }
+
+    .contact-card-link:hover {
+      border-color: rgba(125, 211, 252, 1);
+    }
+
+    .contact-slogan {
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #9ca3af;
     }
     /* CSS:CONTACT-END */
 
@@ -790,6 +881,10 @@
       .projects-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (min-width: 1024px) {
@@ -811,6 +906,10 @@
 
       .project-cover img {
         height: 210px;
+      }
+
+      .contact-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
       }
     }
     /* CSS:RWD-END */
@@ -1116,47 +1215,81 @@
       <!-- SECTION:CONTACT-START -->
       <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
         <div class="container">
-          <h2 id="contact-heading" class="section-title">聯絡我 Contact（占位內容 · 之後會用 Section SDD 替換）</h2>
-          <div class="two-column">
-            <div class="stack">
-              <p class="section-intro">
-                這裡目前是 Contact 區的占位內容。未來會放上實際的聯絡方式與偏好管道，例如 Email、社群帳號、表單連結，並清楚說明適合聯絡的情境（例如：合作 / 演講 / 顧問 / 求職）。
+          <header class="contact-header">
+            <h2 id="contact-heading" class="section-title">聯絡享哥 / 合作邀約</h2>
+            <p class="section-intro contact-intro">
+              如果您有 AI 應用講座、數位轉型內訓、品牌行銷顧問等需求，歡迎透過以下方式聯繫我。我以開放且專業的態度，協助你與團隊把想法落實為可執行的行動方案。
+            </p>
+          </header>
+
+          <div class="contact-grid" aria-label="聯絡方式列表">
+            <!-- Card 1: Email -->
+            <article class="contact-card">
+              <div class="contact-icon" aria-hidden="true">Mail</div>
+              <h3 class="contact-card-title">課程與演講邀約</h3>
+              <p class="contact-card-text">
+                適合企業內訓、公開課程、研討會與主題演講，從 AI 應用實務到產品策略思維。
               </p>
-              <p>
-                之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 Contact section 程式碼整段貼在
-                <span class="pill">SECTION:CONTACT-START</span>
-                與
-                <span class="pill">SECTION:CONTACT-END</span>
-                這兩個註解中間，完全取代現在這一區。
+              <a class="contact-card-link" href="mailto:hello@example.com">
+                傳送 Email 給享哥
+              </a>
+            </article>
+
+            <!-- Card 2: Social Media -->
+            <article class="contact-card">
+              <div class="contact-icon" aria-hidden="true">SNS</div>
+              <h3 class="contact-card-title">關注享哥 AI 觀點</h3>
+              <p class="contact-card-text">
+                定期分享 AI 與數位轉型案例、內容策略與個人實驗心得，掌握最新實作觀點。
               </p>
-              <p class="contact-note">
-                若未來需要加入實際表單或第三方服務嵌入碼，建議仍以這個 &lt;section&gt; 為邊界單位，保持可讀性與可替換性，避免將表單結構零散拆在多個區塊。
+              <a
+                class="contact-card-link"
+                href="https://www.facebook.com/yourpage"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                追蹤粉絲專頁
+              </a>
+            </article>
+
+            <!-- Card 3: LINE / Consultation -->
+            <article class="contact-card">
+              <div class="contact-icon" aria-hidden="true">LINE</div>
+              <h3 class="contact-card-title">即時諮詢 / 交流</h3>
+              <p class="contact-card-text">
+                適合初步評估合作可行性、快速討論需求輪廓，或針對現有專案提出技術與策略建議。
               </p>
-            </div>
-            <div>
-              <div class="contact-list" aria-label="聯絡方式占位清單">
-                <a class="contact-link" href="mailto:hello@example.com">
-                  <span class="contact-label">Email</span>
-                  <span class="contact-value">hello@example.com</span>
-                </a>
-                <a class="contact-link" href="tel:+886900000000">
-                  <span class="contact-label">Phone</span>
-                  <span class="contact-value">+886 900 000 000</span>
-                </a>
-                <a class="contact-link" href="https://github.com/yourname" target="_blank" rel="noopener noreferrer">
-                  <span class="contact-label">GitHub</span>
-                  <span class="contact-value">github.com/yourname</span>
-                </a>
-                <a class="contact-link" href="https://www.linkedin.com/in/yourname" target="_blank" rel="noopener noreferrer">
-                  <span class="contact-label">LinkedIn</span>
-                  <span class="contact-value">linkedin.com/in/yourname</span>
-                </a>
-              </div>
-              <p class="section-note">
-                上述連結目前皆為占位用 href，之後可在 Section SDD 產出的程式碼中一次更新為實際帳號或專屬表單網址，同樣維持整個 &lt;section&gt; 作為替換單位。
+              <a
+                class="contact-card-link"
+                href="https://line.me/R/ti/p/@yourlineid"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                加入 LINE 官方帳號
+              </a>
+            </article>
+
+            <!-- Card 4: More Info -->
+            <article class="contact-card">
+              <div class="contact-icon" aria-hidden="true">CV</div>
+              <h3 class="contact-card-title">講師簡介 / 經歷</h3>
+              <p class="contact-card-text">
+                了解過往合作案例、專長領域與授課經驗，評估是否符合貴單位的需求與受眾輪廓。
               </p>
-            </div>
+              <a
+                class="contact-card-link"
+                href="https://www.linkedin.com/in/yourname"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                檢視完整經歷 / PDF
+              </a>
+            </article>
           </div>
+
+          <p class="contact-slogan">
+            用 AI 賦能您的品牌與團隊。
+          </p>
         </div>
       </section>
       <!-- SECTION:CONTACT-END -->
